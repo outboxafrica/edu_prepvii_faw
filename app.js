@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 
 // Routes
-app.use('/user', userRoutes);
+app.use('/vsuser', userRoutes);
 
 
 app.get("/", (req, res, next) => {
