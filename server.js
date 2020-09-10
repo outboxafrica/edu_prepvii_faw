@@ -1,32 +1,45 @@
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose')
-const QuestionRoute = require('./routes/QuestionRoute')
-const cors = require('cors');
-const router = require('./routes/QuestionRoute');
+const express=require("express")
+const mongoose=require("mongoose")
+const dotenv=require("dotenv")
+const route=require("./routes/post")
 
-require('dotenv').config()
+dotenv.config()
 
-//middleware
-app.use(cors())
+
+const app=express()
+
 app.use(express.json())
 
-app.use('/questions', QuestionRoute);
+app.use(route)
 
-app.get('/', (req, res) => {
-  res.send('Hello Welcome!');
-});
+// app.get("/",(req,res)=>{
+//     res.status(200).send("hello world")
+// })
+mongoose.connect(process.env.local,{useNewUrlParser:true,
+useUnifiedTopology:true,useFindAndModify:false})
 
-//database
-mongoose.connect('mongodb://localhost:27017/faw',{ useNewUrlParser: true,useUnifiedTopology: true });
-const db = mongoose.connection
-db.on('error',(error) => console.error(error))
-db.once('open', () => console.log('Database is connected'))
+var db=mongoose.connection
 
+db.once("open",()=>{
+    console.log("db up and running")
+})
 
-//server
-const port = process.env.PORT || 3000;
-app.listen(port, (req, res) =>{
-  console.log(`Server is running at http://localhost:${port}`);
-});
-app.use(router);
+db.on("error",()=>{
+    console.log("connection failed")
+})
+
+// app.post("/",(req,res)=>{
+//     res.status(200).send("the earth and hell")
+// })
+
+app.put("/",(req,res)=>{
+    res.status(200).send("mars")
+})
+
+app.delete("/delete",(req,res)=>{
+    res.status(200).send("venus")
+})
+
+app.listen(5000,()=>{
+    console.log(`we are listening on port 3000`)
+})
