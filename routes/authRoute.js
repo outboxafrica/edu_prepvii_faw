@@ -49,7 +49,7 @@ router.post('/login', (req, res, next) => {
                 })
             }
             if (result) {
-                let token = jwt.sign({name: username}, 'verySecretValue', {expiresIn: '1h'})
+                let token = jwt.sign({name: username},process.env.JWT_SECRET , {expiresIn: '1h'})
                 res.status(200).json({
                     message: 'Login Successful!',
                     token
