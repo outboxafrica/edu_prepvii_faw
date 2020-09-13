@@ -40,7 +40,7 @@ app.get('/', (req, res, next) => {
 });
 
 // connect db
-mongoose.connect(process.env.DB_URL_Atlas, { useNewUrlParser: true,useUnifiedTopology: true });
+mongoose.connect(process.env.DB_URL, { useNewUrlParser: true,useUnifiedTopology: true });
 const db = mongoose.connect; // set connection variable
 
 // check for db connection
