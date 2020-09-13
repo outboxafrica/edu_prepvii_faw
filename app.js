@@ -8,6 +8,7 @@ require('dotenv').config();
 // import routes
 const authRoutes = require('./routes/authRoute');
 const questionRoutes = require('./routes/QuestionRoute');
+const answerRoutes = require('./routes/answerRoute');
 
 // create port variable
 const port = process.env.PORT || 3000;
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 // routes
 app.use('/', authRoutes);
 app.use('/', questionRoutes);
+app.use('/', answerRoutes);
 
 //cloud database
 const db = process.env.MONGO_URL 
@@ -29,9 +31,7 @@ mongoose.connect(db, {useUnifiedTopology:true, useNewUrlParser:true, useFindAndM
     .then(() => console.log('     MongoDb Connected!!! (*_*) '))
 
 
-module.exports = app;
-
-// server
+//server
 app.listen(port, (req, res) => {
     console.log(`Server running at http://localhost:${port}`);
 });

@@ -44,3 +44,5 @@ Logs in a single user in the application
 ## Contributors
 . Tracy Nuwagaba
 . Walaga Priscilla
+. Nawire Scovia
+. Igira Edgar
