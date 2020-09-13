@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Routes
-app.use('/auth', authRoute);
+app.use('/', authRoute);
 
 
 // send message for default URL
@@ -32,14 +32,10 @@ app.get('/', (req, res, next) => {
     });
 });
 
-// connect db
-mongoose.connect('mongodb://localhost:27017/faw', { useNewUrlParser: true,useUnifiedTopology: true });
-const db = mongoose.connect; // set connection variable
+//cloud database
+const db = process.env.MONGO_URL 
 
-// check for db connection
-if(!db) {
-    console.log("Error connecting db");
-} else {
-    console.log("Db connected successfully");
-};
+//connecting to the database
+mongoose.connect(db, {useUnifiedTopology:true, useNewUrlParser:true, useFindAndModify: false })
+    .then(() => console.log('     MongoDb Connected!!! (*_*) '))
 
