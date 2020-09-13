@@ -7,7 +7,7 @@ const User = require('../models/authModel');
 const request = require('request');
 
 
-router.post('/signup', (req, res, next) => {
+router.post('/auth/signup', (req, res, next) => {
     bcrypt.hash(req.body.password, 10, (err, hashedPass) => {
         if (err) {
             res.json({
@@ -36,7 +36,7 @@ router.post('/signup', (req, res, next) => {
     console.log(request.body);
 })
 
-router.post('/login', (req, res, next) => {
+router.post('/auth/login', (req, res, next) => {
     var username = req.body.username
     var password = req.body.password
 

@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Question = require('../models/Question')
+const Question = require('../models/questionModel')
 
 //route for creating/posting a  questions
 router.post('/questions', async (req,res) =>{
