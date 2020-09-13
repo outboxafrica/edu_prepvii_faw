@@ -27,7 +27,7 @@ app.use('/', answerRoutes);
 const db = process.env.MONGO_URL 
 
 //connecting to the database
-mongoose.connect(db, {useUnifiedTopology:true, useNewUrlParser:true, useFindAndModify: false })
+mongoose.connect('mongodb+srv://Priscilla:Priscilla2@faw.hlyy4.mongodb.net/<FAW>?retryWrites=true&w=majority', {useUnifiedTopology:true, useNewUrlParser:true, useFindAndModify: false })
     .then(() => console.log('     MongoDb Connected!!! (*_*) '))
 
 
