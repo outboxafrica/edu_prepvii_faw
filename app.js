@@ -8,7 +8,7 @@ require('dotenv').config();
 // import routes
 const authRoutes = require('./routes/authRoute');
 const questionRoutes = require('./routes/QuestionRoute');
-const answerRoutes = require('./routes/answerRoute');
+const answerRoutes = require('./routes/answerroute');
 
 // create port variable
 const port = process.env.PORT || 3000;
