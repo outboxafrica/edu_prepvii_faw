@@ -1,9 +1,12 @@
 const express = require('express'); // import express
 const mongoose = require('mongoose'); // import mongoose
 const authRoute = require('./routes/authRoute'); // import auth routes
+const questions = require('./routes/QuestionRoute')
 const bodyParser = require('body-parser'); // import body parser
 const request = require('request'); //import request
 const morgan = require('morgan'); //import morgan
+
+const answer = require('./routes/answer')
 
 const app = express(); // initialise the app
 
@@ -23,7 +26,8 @@ app.use(bodyParser.json());
 
 // Routes
 app.use('/auth', authRoute);
-
+app.use('/questions',questions)
+app.use('/answer',answer)
 
 // send message for default URL
 app.get('/', (req, res, next) => {
