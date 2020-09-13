@@ -28,7 +28,10 @@ const db = process.env.MONGO_URL
 
 //connecting to the database
 mongoose.connect(db, {useUnifiedTopology:true, useNewUrlParser:true, useFindAndModify: false })
-    .then(() => console.log('     MongoDb Connected!!! (*_*) '))
+const db = mongoose.connection
+db.on('error',(error) => console.error(error))
+db.once('open', () => console.log('Database is connected'))
+
 
 
 //server
