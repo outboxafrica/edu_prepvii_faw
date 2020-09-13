@@ -9,7 +9,6 @@ const app = express(); // initialise the app
 
 // env variables
 require('dotenv').config();
-const DB = require('./config/keys').MONGOURL
 
 // server
 const port = process.env.PORT || 3000;
@@ -23,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Routes
-app.use('/auth', authRoute);
+app.use('/', authRoute);
 
 
 // send message for default URL
@@ -33,22 +32,10 @@ app.get('/', (req, res, next) => {
     });
 });
 
-// cloud database
-const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/faw'
-// connect to the database
-mongoose.connect(process.env.MONGOURL)
-//mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
-    //.then(() => console.log('   MongoDb Connected!!! (*_*)'))
+//cloud database
+const db = process.env.MONGO_URL 
 
-/* connect db
-mongoose.connect('mongodb://localhost:27017/faw', { useNewUrlParser: true,useUnifiedTopology: true });
-const db = mongoose.connect; // set connection variable
-
-// check for db connection
-if(!db) {
-    console.log("Error connecting db");
-} else {
-    console.log("Db connected successfully");
-};
-*/
+//connecting to the database
+mongoose.connect(db, {useUnifiedTopology:true, useNewUrlParser:true, useFindAndModify: false })
+    .then(() => console.log('     MongoDb Connected!!! (*_*) '))
 
