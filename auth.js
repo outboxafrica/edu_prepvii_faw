@@ -5,6 +5,8 @@ const questions = require('./routes/QuestionRoute')
 const bodyParser = require('body-parser'); // import body parser
 const request = require('request'); //import request
 const morgan = require('morgan'); //import morgan
+const cors = require("cors")
+
 
 const answer = require('./routes/answer')
 
@@ -20,6 +22,7 @@ app.listen(port, (req, res) => {
 });
 
 // Middleware or use user routes in the app
+app.use(cors())
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -37,7 +40,7 @@ app.get('/', (req, res, next) => {
 });
 
 // connect db
-mongoose.connect(process.env.DB_URL, { useNewUrlParser: true,useUnifiedTopology: true });
+mongoose.connect(process.env.DB_URL_Atlas, { useNewUrlParser: true,useUnifiedTopology: true });
 const db = mongoose.connect; // set connection variable
 
 // check for db connection
