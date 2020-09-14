@@ -19,9 +19,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // routes
-app.use('/', authRoutes);
-app.use('/', questionRoutes);
-app.use('/', answerRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/questions', questionRoutes);
+app.use('/api/answers', answerRoutes);
 
 //cloud database
 const db = process.env.MONGO_URL 
