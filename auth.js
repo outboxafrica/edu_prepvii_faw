@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Routes
-app.use('/', authRoute);
+app.use('/user', authRoute);
 
 
 // send message for default URL
