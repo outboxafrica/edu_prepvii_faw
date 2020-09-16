@@ -1,5 +1,8 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router()
+const mongoose = require('mongoose');
+const app = express();
+const request = require('request');
 const Question = require('../models/questionModel')
 
 //route for creating/posting a  questions

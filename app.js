@@ -19,9 +19,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // routes
-app.use('/api/auth', authRoutes);
-app.use('/api/questions', questionRoutes);
-app.use('/api/answers', answerRoutes);
+app.use("/api", authRoutes, answerRoutes, questionRoutes);
+app.get("/", (req, res,) => {
+    res.status(200).json({
+    message: "Welcome to EDU-API for Team FAW. It is a Q&A platform where people can ask questions and give in responses.",
+  });
+});
 
 //cloud database
 const db = process.env.MONGO_URL 

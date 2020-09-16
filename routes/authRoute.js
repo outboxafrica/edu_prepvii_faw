@@ -71,7 +71,7 @@ router.post('/login', (req, res, next) => {
                       email: user[0].email,
                       userId: user[0]._id
                   },
-                  process.env.JWT_KEY,
+                  "secret",
                   {
                       expiresIn: '1h'
                   }
@@ -113,4 +113,4 @@ router.delete('/:userId', (req, res, next) => {
     })
 })
 
-module.exports = router
+module.exports = router;
