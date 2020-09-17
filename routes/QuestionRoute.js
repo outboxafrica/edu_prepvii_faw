@@ -22,11 +22,11 @@ router.post('/questions', async (req,res) =>{
 })
 //route for searching all questions
 router.get('/questions', async (req,res) =>{
-    try{
-        const questions = await Question.find()
-        return res.status(200).json(questions)
+    try {
+        const question = await Question.find()
+        return res.status(200).json({question})
     } catch (error) {
-        return res.status(500).json({"error":error})
+        return res.status(400).json({error})
     }
 
 })

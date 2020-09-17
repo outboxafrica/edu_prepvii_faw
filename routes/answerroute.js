@@ -29,7 +29,7 @@ router.get('/answers', async (req,res) =>{
 
 })
 
-router.get('/:questionId',async (req, res) => {
+router.get('/answer/:questionId',async (req, res) => {
     try {
       const all = await answerModel.find(
         { id: req.params.questionId },
