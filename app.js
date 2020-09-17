@@ -27,10 +27,10 @@ app.get("/", (req, res,) => {
 });
 
 //cloud database
-const db = process.env.MONGO_URL 
+const db = process.env.MONGO_URL_Atlas 
 
 //connecting to the database
-mongoose.connect('mongodb+srv://Priscilla:Priscilla2@faw.hlyy4.mongodb.net/<FAW>?retryWrites=true&w=majority', {useUnifiedTopology:true, useNewUrlParser:true, useFindAndModify: false })
+mongoose.connect(db, {useUnifiedTopology:true, useNewUrlParser:true, useFindAndModify: false })
     .then(() => console.log('     MongoDb Connected!!! (*_*) '))
 
 

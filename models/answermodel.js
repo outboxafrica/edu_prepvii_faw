@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
 
-//create a faw schema and model
-const AnswerSchema = new mongoose.Schema({
-    id:mongoose.Schema.Types.ObjectId,
+//create a answer schema and model
+const answerSchema = mongoose.Schema({
+    id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Questions",
+      },
     description: {
         type: String,
         required: true
     }
 });
 
-module.exports = mongoose.model('Answer', AnswerSchema);
+const User = mongoose.model('answers', answerSchema);
+
+module.exports = User;
