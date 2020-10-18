@@ -17,6 +17,15 @@ const port = process.env.PORT || 3000;
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, authorization"
+    );
+    next();
+  });
 
 // routes
 app.use("/api", authRoutes, answerRoutes, questionRoutes);
