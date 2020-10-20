@@ -11,7 +11,7 @@ const questionRoutes = require('./routes/QuestionRoute');
 const answerRoutes = require('./routes/answerroute');
 
 // create port variable
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 // middleware
 app.use(morgan('dev'))
